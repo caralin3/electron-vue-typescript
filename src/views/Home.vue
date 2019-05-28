@@ -9,6 +9,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { Button } from '../components';
+import { openDialog } from '../electron/file-dialog';
 
 @Component({
   components: {
@@ -16,8 +17,7 @@ import { Button } from '../components';
   },
   methods: {
     action() {
-      this.$emit('click');
-      console.log('Clicked');
+      openDialog();
     }
   }
 })
