@@ -2,7 +2,16 @@ import { remote } from 'electron';
 
 const fs = remote.require('fs');
 
-export const openDialog = (): void => {
+export const getFolderPath = (multi?: boolean) => {
+  const properties: any[] = multi ? ['openDirectory', 'multiSelections'] : ['openDirectory'];
+  const paths = remote.dialog.showOpenDialog(remote.getCurrentWindow(), { properties });
+  if (paths) {
+    return paths[0];
+  }
+  return paths;
+};
+
+export const openFileDialog = (): void => {
   remote.dialog.showOpenDialog(
     remote.getCurrentWindow(),
     {
@@ -26,11 +35,3 @@ export const openDialog = (): void => {
     }
   );
 };
-
-// let count = 0;
-// $('#click-counter').text(count.toString());
-// $('#countbtn').on('click', () => {
-//   count += 1;
-//   $('#click-counter').text(count);
-//   openDialog();
-// });

@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { Button } from '../components';
-import { openDialog } from '../electron/file-dialog';
+import { openFileDialog, getFolderPath } from '../electron/file-dialogs';
 
 @Component({
   components: {
@@ -17,7 +17,9 @@ import { openDialog } from '../electron/file-dialog';
   },
   methods: {
     action() {
-      openDialog();
+      // openFileDialog();
+      const path = getFolderPath();
+      console.log(path);
     }
   }
 })
