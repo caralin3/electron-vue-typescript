@@ -14,11 +14,12 @@
     "test:unit": "vue-cli-service test:unit",
     "ts:format": "prettier --write src/**/*.ts src/**/*.tsx",
     "ts:lint": "tslint --project ./",
-    "lint": "concurrently -n \"ts:lint,vue:lint\" -c \"red,blue\" \"yarn run ts:lint\" \"yarn run vue:lint\"",
-    "format": "concurrently -n \"ts:format\" -c \"red\" \"yarn run ts:format\"",
-    "test": "concurrently -n \"test:unit\" -c \"red\" \"yarn run test:unit\""
+    "lint": "concurrently -n \"ts:lint,vue:lint\" -c \"yellow,blue\" \"yarn run ts:lint\" \"yarn run vue:lint\"",
+    "format": "concurrently -n \"ts:format\" -c \"green\" \"yarn run ts:format\"",
+    "test": "concurrently -n \"test:unit\" -c \"red\" \"yarn run test:unit\"",
+    "check": "yarn run format && yarn run lint && yarn run test"
   },
-  "main": "background.js",
+  "main": "electron/index.js",
   "dependencies": {
     "chai-as-promised": "^7.1.1",
     "core-js": "^2.6.5",
