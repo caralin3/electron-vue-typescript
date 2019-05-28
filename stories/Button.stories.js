@@ -1,25 +1,29 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-
-import MyButton from './MyButton';
+import { Button } from '../src/components';
 
 storiesOf('Button', module)
-  .add('with text', () => ({
-    components: { MyButton },
-    template: '<my-button @click="action">Hello Button</my-button>',
-    methods: { action: action('clicked') },
+  .add('Primary', () => ({
+    components: { Button },
+    template: '<Button :variant="variant" :onClick="action">Hello Button</Button>',
+    data: () => ({ variant: 'primary' }),
+    methods: { action: action('primaryClicked') },
   }))
-  .add('with JSX', () => ({
-    components: { MyButton },
-    // tslint-disable-next-line no-unused-vars
-    render(h) {
-      return <my-button onClick={this.action}>With JSX</my-button>;
-    },
-    methods: { action: linkTo('clicked') },
+  .add('Secondary', () => ({
+    components: { Button },
+    template: '<Button :variant="variant" :onClick="action">Hello Button</Button>',
+    data: () => ({ variant: 'secondary' }),
+    methods: { action: action('secondaryClicked') },
   }))
-  .add('with some emoji', () => ({
-    components: { MyButton },
-    template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
-    methods: { action: action('clicked') },
+  .add('Danger', () => ({
+    components: { Button },
+    template: '<Button :variant="variant" :onClick="action">Hello Button</Button>',
+    data: () => ({ variant: 'danger' }),
+    methods: { action: action('dangerClicked') },
+  }))
+  .add('Success', () => ({
+    components: { Button },
+    template: '<Button :variant="variant" :onClick="action">Hello Button</Button>',
+    data: () => ({ variant: 'success' }),
+    methods: { action: action('successClicked') },
   }));
