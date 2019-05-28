@@ -3,8 +3,12 @@ import { remote } from 'electron';
 const fs = remote.require('fs');
 
 export const getFolderPath = (multi?: boolean) => {
-  const properties: any[] = multi ? ['openDirectory', 'multiSelections'] : ['openDirectory'];
-  const paths = remote.dialog.showOpenDialog(remote.getCurrentWindow(), { properties });
+  const properties: any[] = multi
+    ? ['openDirectory', 'multiSelections']
+    : ['openDirectory'];
+  const paths = remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
+    properties
+  });
   if (paths) {
     return paths[0];
   }
