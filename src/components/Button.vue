@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="[`button__${variant}`]" type="button" @click="onClick">
+  <button class="button" :class="[`button__${variant}`, `button__${size}`]" type="button" @click="onClick">
     <slot></slot>
   </button>
 </template>
@@ -10,6 +10,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class Button extends Vue {
   @Prop() private onClick!: (e: HTMLButtonElement) => void;
+  @Prop() private size: 'medium' | 'large' | undefined;
   @Prop() private variant!: 'primary' | 'secondary' | 'danger' | 'success';
 }
 </script>
@@ -20,6 +21,16 @@ export default class Button extends Vue {
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
+
+  &__medium {
+    font-size: 18px;
+    padding: 0.5rem 1rem;
+  }
+
+  &__large {
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+  }
 
   &__primary {
     background: #CC4C26;

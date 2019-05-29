@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
+  <div class="app">
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-@import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
+@import '@/assets/styles/index.scss';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

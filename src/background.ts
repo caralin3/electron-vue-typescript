@@ -21,11 +21,12 @@ protocol.registerSchemesAsPrivileged([
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
     height: 600,
+    title: 'Photo Album',
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    width: 800
   });
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -39,6 +40,10 @@ function createWindow() {
   }
 
   setMainMenu();
+
+  win.on('page-title-updated', e => {
+    e.preventDefault();
+  });
 
   win.on('closed', () => {
     win = null;
