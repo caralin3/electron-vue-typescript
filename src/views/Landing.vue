@@ -20,7 +20,7 @@ import router from '../router';
     action() {
       const path = getFolderPath();
       console.log(path);
-      router.push('home');
+      router.push(`/home?${path}`);
     }
   }
 })
